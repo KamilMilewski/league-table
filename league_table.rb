@@ -86,6 +86,16 @@ class LeagueTable
 
   def get_draws(team_name)
     # Return the no. of draws a team has, 0 by default
+    draws = 0
+    matches_parsed.each do |match|
+      case team_name
+      when match[:left][:name]
+        draws += 1 if match[:left][:goals] == match[:right][:goals]
+      when match[:right][:name]
+        draws += 1 if match[:left][:goals] == match[:right][:goals]
+      end
+    end
+    draws
   end
 
   def get_losses(team_name)

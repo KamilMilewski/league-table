@@ -43,36 +43,47 @@ class TestLeagueTable < Minitest::Test
   end
 
   def test_that_can_get_goal_difference
-    assert_equal @lt.get_goal_difference('Man Utd'), 11
-    assert_equal @lt.get_goal_difference('Liverpool'), -11
-    assert_equal @lt.get_goal_difference('Jagiellonia Białystok'), 5
-    assert_equal @lt.get_goal_difference('Barcelona'), 0
-    assert_equal @lt.get_goal_difference('Real Madryt'), -3
-    assert_equal @lt.get_goal_difference('Legia'), -2
-    assert_equal @lt.get_goal_difference('Mońki'), -3
-    assert_equal @lt.get_goal_difference('Sokółka'), 3
+    assert_equal(11,  @lt.get_goal_difference('Man Utd'))
+    assert_equal(-11, @lt.get_goal_difference('Liverpool'))
+    assert_equal(5,   @lt.get_goal_difference('Jagiellonia Białystok'))
+    assert_equal(0,   @lt.get_goal_difference('Barcelona'))
+    assert_equal(-3,  @lt.get_goal_difference('Real Madryt'))
+    assert_equal(-2,  @lt.get_goal_difference('Legia'))
+    assert_equal(-3,  @lt.get_goal_difference('Mońki'))
+    assert_equal(3,   @lt.get_goal_difference('Sokółka'))
   end
 
   def test_that_can_get_goals_against
-    assert_equal @lt.get_goals_against('Man Utd'), 2
-    assert_equal @lt.get_goals_against('Liverpool'), 13
-    assert_equal @lt.get_goals_against('Jagiellonia Białystok'), 1
-    assert_equal @lt.get_goals_against('Barcelona'), 0
-    assert_equal @lt.get_goals_against('Real Madryt'), 3
-    assert_equal @lt.get_goals_against('Legia'), 3
-    assert_equal @lt.get_goals_against('Mońki'), 3
-    assert_equal @lt.get_goals_against('Sokółka'), 0
+    assert_equal 2,  @lt.get_goals_against('Man Utd')
+    assert_equal 13, @lt.get_goals_against('Liverpool')
+    assert_equal 1,  @lt.get_goals_against('Jagiellonia Białystok')
+    assert_equal 0,  @lt.get_goals_against('Barcelona')
+    assert_equal 3,  @lt.get_goals_against('Real Madryt')
+    assert_equal 3,  @lt.get_goals_against('Legia')
+    assert_equal 3,  @lt.get_goals_against('Mońki')
+    assert_equal 0,  @lt.get_goals_against('Sokółka')
   end
 
   def test_that_can_get_wins
-    assert_equal @lt.get_wins('Man Utd'), 2
-    assert_equal @lt.get_wins('Liverpool'), 0
-    assert_equal @lt.get_wins('Jagiellonia Białystok'), 2
-    assert_equal @lt.get_wins('Barcelona'), 0
-    assert_equal @lt.get_wins('Real Madryt'), 0
-    assert_equal @lt.get_wins('Legia'), 0
-    assert_equal @lt.get_wins('Mońki'), 0
-    assert_equal @lt.get_wins('Sokółka'), 1
+    assert_equal 2, @lt.get_wins('Man Utd')
+    assert_equal 0, @lt.get_wins('Liverpool')
+    assert_equal 2, @lt.get_wins('Jagiellonia Białystok')
+    assert_equal 0, @lt.get_wins('Barcelona')
+    assert_equal 0, @lt.get_wins('Real Madryt')
+    assert_equal 0, @lt.get_wins('Legia')
+    assert_equal 0, @lt.get_wins('Mońki')
+    assert_equal 1, @lt.get_wins('Sokółka')
+  end
+
+  def test_that_can_get_draws
+    assert_equal 0, @lt.get_draws('Man Utd')
+    assert_equal 1, @lt.get_draws('Liverpool')
+    assert_equal 0, @lt.get_draws('Jagiellonia Białystok')
+    assert_equal 1, @lt.get_draws('Barcelona')
+    assert_equal 0, @lt.get_draws('Real Madryt')
+    assert_equal 0, @lt.get_draws('Legia')
+    assert_equal 0, @lt.get_draws('Mońki')
+    assert_equal 0, @lt.get_draws('Sokółka')
   end
 end
 #
