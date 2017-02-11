@@ -72,6 +72,16 @@ class LeagueTable
 
   def get_wins(team_name)
     # Return the no. of wins a team has, 0 by default
+    wins = 0
+    matches_parsed.each do |match|
+      case team_name
+      when match[:left][:name]
+        wins += 1 if match[:left][:goals] > match[:right][:goals]
+      when match[:right][:name]
+        wins += 1 if match[:left][:goals] < match[:right][:goals]
+      end
+    end
+    wins
   end
 
   def get_draws(team_name)
