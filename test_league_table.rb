@@ -52,6 +52,17 @@ class TestLeagueTable < Minitest::Test
     assert_equal @lt.get_goal_difference('Mońki'), -3
     assert_equal @lt.get_goal_difference('Sokółka'), 3
   end
+
+  def test_that_can_get_goals_against
+    assert_equal @lt.get_goals_against('Man Utd'), 2
+    assert_equal @lt.get_goals_against('Liverpool'), 13
+    assert_equal @lt.get_goals_against('Jagiellonia Białystok'), 1
+    assert_equal @lt.get_goals_against('Barcelona'), 0
+    assert_equal @lt.get_goals_against('Real Madryt'), 3
+    assert_equal @lt.get_goals_against('Legia'), 3
+    assert_equal @lt.get_goals_against('Mońki'), 3
+    assert_equal @lt.get_goals_against('Sokółka'), 0
+  end
 end
 #
 # lt = LeagueTable.new

@@ -43,6 +43,16 @@ class LeagueTable
   def get_goals_against(team_name)
     # Returns the no. of goals a team has conceeded (had scored against them),
     # 0 by default
+    goals_against = 0
+    matches_parsed.each do |match|
+      case team_name
+      when match[:left][:name]
+        goals_against += match[:right][:goals]
+      when match[:right][:name]
+        goals_against += match[:left][:goals]
+      end
+    end
+    goals_against
   end
 
   def get_goal_difference(team_name)
