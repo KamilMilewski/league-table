@@ -11,10 +11,10 @@ class LeagueTable
     goals = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        goals += match[:left][:goals]
-      when match[:right][:name]
-        goals += match[:right][:goals]
+      when match[:home][:name]
+        goals += match[:home][:goals]
+      when match[:away][:name]
+        goals += match[:away][:goals]
       end
     end
     goals
@@ -25,16 +25,16 @@ class LeagueTable
     points = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        if match[:left][:goals] > match[:right][:goals]
+      when match[:home][:name]
+        if match[:home][:goals] > match[:away][:goals]
           points += 3
-        elsif match[:left][:goals] == match[:right][:goals]
+        elsif match[:home][:goals] == match[:away][:goals]
           points += 1
         end
-      when match[:right][:name]
-        if match[:right][:goals] > match[:left][:goals]
+      when match[:away][:name]
+        if match[:away][:goals] > match[:home][:goals]
           points += 3
-        elsif match[:right][:goals] == match[:left][:goals]
+        elsif match[:away][:goals] == match[:home][:goals]
           points += 1
         end
       end
@@ -48,10 +48,10 @@ class LeagueTable
     goals_against = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        goals_against += match[:right][:goals]
-      when match[:right][:name]
-        goals_against += match[:left][:goals]
+      when match[:home][:name]
+        goals_against += match[:away][:goals]
+      when match[:away][:name]
+        goals_against += match[:home][:goals]
       end
     end
     goals_against
@@ -63,10 +63,10 @@ class LeagueTable
     goal_difference = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        goal_difference += match[:left][:goals] - match[:right][:goals]
-      when match[:right][:name]
-        goal_difference += match[:right][:goals] - match[:left][:goals]
+      when match[:home][:name]
+        goal_difference += match[:home][:goals] - match[:away][:goals]
+      when match[:away][:name]
+        goal_difference += match[:away][:goals] - match[:home][:goals]
       end
     end
     goal_difference
@@ -77,10 +77,10 @@ class LeagueTable
     wins = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        wins += 1 if match[:left][:goals] > match[:right][:goals]
-      when match[:right][:name]
-        wins += 1 if match[:left][:goals] < match[:right][:goals]
+      when match[:home][:name]
+        wins += 1 if match[:home][:goals] > match[:away][:goals]
+      when match[:away][:name]
+        wins += 1 if match[:home][:goals] < match[:away][:goals]
       end
     end
     wins
@@ -91,10 +91,10 @@ class LeagueTable
     draws = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        draws += 1 if match[:left][:goals] == match[:right][:goals]
-      when match[:right][:name]
-        draws += 1 if match[:left][:goals] == match[:right][:goals]
+      when match[:home][:name]
+        draws += 1 if match[:home][:goals] == match[:away][:goals]
+      when match[:away][:name]
+        draws += 1 if match[:home][:goals] == match[:away][:goals]
       end
     end
     draws
@@ -105,10 +105,10 @@ class LeagueTable
     losses = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:left][:name]
-        losses += 1 if match[:left][:goals] < match[:right][:goals]
-      when match[:right][:name]
-        losses += 1 if match[:left][:goals] > match[:right][:goals]
+      when match[:home][:name]
+        losses += 1 if match[:home][:goals] < match[:away][:goals]
+      when match[:away][:name]
+        losses += 1 if match[:home][:goals] > match[:away][:goals]
       end
     end
     losses
@@ -120,11 +120,11 @@ class LeagueTable
 
   def self.parse_match(match)
     {
-      left: {
+      home: {
         name: /\A(.+)\s\d+\s-/.match(match)[1],
         goals: /\s(\d+)\s-/.match(match)[1].to_i
       },
-      right: {
+      away: {
         name: /-\s\d+\s(.+)\z/.match(match)[1],
         goals: /-\s(\d+)\s/.match(match)[1].to_i
       }

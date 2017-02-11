@@ -13,10 +13,10 @@ class TestLeagueTable < Minitest::Test
 
   def test_parse_match_method
     parsed_match = LeagueTable.parse_match('Man Utd 3 - 0 Liverpool')
-    assert_equal 'Man Utd',   parsed_match[:left][:name]
-    assert_equal 3,           parsed_match[:left][:goals]
-    assert_equal 'Liverpool', parsed_match[:right][:name]
-    assert_equal 0,           parsed_match[:right][:goals]
+    assert_equal 'Man Utd',   parsed_match[:home][:name]
+    assert_equal 3,           parsed_match[:home][:goals]
+    assert_equal 'Liverpool', parsed_match[:away][:name]
+    assert_equal 0,           parsed_match[:away][:goals]
   end
 
   def test_that_can_get_goals
