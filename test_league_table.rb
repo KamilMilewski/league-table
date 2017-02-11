@@ -31,7 +31,6 @@ class TestLeagueTable < Minitest::Test
   end
 
   def test_that_can_get_points
-    # win - 3 points; draw - 1; lose - 0
     assert_equal 6, @lt.get_points('Man Utd')
     assert_equal 1, @lt.get_points('Liverpool')
     assert_equal 6, @lt.get_points('Jagiellonia Białystok')

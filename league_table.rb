@@ -7,6 +7,7 @@ class LeagueTable
   end
 
   def get_goals_for(team_name)
+    # Returns the no. of goals a team has scored, 0 by default
     goals = 0
     matches_parsed.each do |match|
       case team_name
@@ -20,6 +21,7 @@ class LeagueTable
   end
 
   def get_points(team_name)
+    # win - 3 points; draw - 1; lose - 0
     points = 0
     matches_parsed.each do |match|
       case team_name
