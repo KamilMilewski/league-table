@@ -1,5 +1,2 @@
  source 'https://rubygems.org'
  gem 'minitest-reporters',       '1.1.9'
- gem 'byebug'
- gem 'pry_debug'
- gem 'pry-nav'

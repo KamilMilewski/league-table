@@ -100,6 +100,16 @@ class LeagueTable
 
   def get_losses(team_name)
     # Return the no. of losses a team has, 0 by default
+    losses = 0
+    matches_parsed.each do |match|
+      case team_name
+      when match[:left][:name]
+        losses += 1 if match[:left][:goals] < match[:right][:goals]
+      when match[:right][:name]
+        losses += 1 if match[:left][:goals] > match[:right][:goals]
+      end
+    end
+    losses
   end
 
   def matches_parsed
