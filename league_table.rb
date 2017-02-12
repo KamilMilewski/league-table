@@ -91,9 +91,7 @@ class LeagueTable
     draws = 0
     matches_parsed.each do |match|
       case team_name
-      when match[:home][:name]
-        draws += 1 if match[:home][:goals] == match[:away][:goals]
-      when match[:away][:name]
+      when match[:home][:name], match[:away][:name]
         draws += 1 if match[:home][:goals] == match[:away][:goals]
       end
     end
